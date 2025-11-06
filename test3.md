@@ -1,5 +1,4 @@
-
-#7d4049 DISEÑO FUNCIONAL Y TÉCNICO
+# DISEÑO FUNCIONAL Y TÉCNICO
 
 **Versión:** 1.0  
 **Fecha:** 31 Octubre 2025  
