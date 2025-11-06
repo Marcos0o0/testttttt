@@ -197,26 +197,26 @@ graph TD
     subgraph CrearOrdenAuto [UC-005: Crear Orden Automática]
         direction TB
 
-        Info["<b>Información General</b><br/>Actor: Sistema / Administrador<br/>Crear automáticamente una orden de trabajo al aprobar un presupuesto"]
-        
-        Pre["<b>Precondiciones</b><br/>- Presupuesto existente<br/>- Estado del presupuesto = Aprobado<br/>- Administrador autenticado"]
-        
-        subgraph Flujo["Flujo Principal"]
-            UC_A[1. Administrador aprueba un presupuesto]
-            UC_V[2. Validar estado del presupuesto]
-            UC_G[3. Generar orden de trabajo automáticamente]
-            UC_C[4. Copiar datos de cliente y vehículo]
-            UC_E[5. Asignar estado inicial 'En Reparación']
-            UC_L[6. Vincular ID de presupuesto a la orden]
-            UC_R[7. Guardar orden en la base de datos]
-            UC_N[8. Confirmar creación automática al administrador]
-            
+        Info["<b>Información General</b><br/>Actor: Sistema / Administrador<br/>Objetivo: Generar automáticamente una orden de trabajo al aprobar un presupuesto"]
+
+        Pre["<b>Precondiciones</b><br/>- Presupuesto existente en estado Aprobado<br/>- Administrador autenticado<br/>- Conexión activa a la base de datos"]
+
+        subgraph Flujo ["Flujo Principal"]
+            UC_A[1. Administrador aprueba el presupuesto]
+            UC_V[2. El sistema valida el estado del presupuesto]
+            UC_G[3. El sistema genera una nueva orden de trabajo]
+            UC_C[4. Copia los datos del cliente y vehículo desde el presupuesto]
+            UC_E[5. Asigna estado inicial 'En Reparación']
+            UC_L[6. Vincula el ID del presupuesto aprobado a la orden]
+            UC_R[7. Guarda la orden de trabajo en la base de datos]
+            UC_N[8. Notifica al administrador la creación exitosa]
+
             UC_A --> UC_V --> UC_G --> UC_C --> UC_E --> UC_L --> UC_R --> UC_N
         end
 
-        Post["<b>Postcondiciones</b><br/>- Orden creada y almacenada<br/>- Estado inicial 'En Reparación'<br/>- Vinculada al presupuesto aprobado"]
-        
-        Alt["<b>Flujos Alternativos</b><br/>FA-001: Presupuesto no válido → Mostrar error<br/>FA-002: Error al guardar orden → Registrar log de sistema"]
+        Post["<b>Postcondiciones</b><br/>- Orden creada automáticamente<br/>- Estado inicial: En Reparación<br/>- Orden vinculada al presupuesto aprobado<br/>- Registro almacenado en base de datos"]
+
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Presupuesto inválido → Mostrar mensaje de error<br/>FA-002: Error al guardar la orden → Registrar evento en log del sistema"]
 
         Info --> Pre --> Flujo --> Post --> Alt
     end
@@ -235,8 +235,6 @@ graph TD
     style UC_L fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
-
----
 
 ## 1.2. Flujo Principal de Procesos
 
