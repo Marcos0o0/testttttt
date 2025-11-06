@@ -92,7 +92,7 @@ graph TD
     style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_P fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_V fill:#2d4a2c,stroke:#3d5a3c,color:#fff
-    style UC_R fill:#407a40,stroke:#3d5a3c,color:#fff
+    style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_C fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
 
