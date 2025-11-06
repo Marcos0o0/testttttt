@@ -86,11 +86,18 @@ graph TB
         Info --> Pre --> Flujo --> Post --> Alt
     end
     
-    style Info fill:#e3f2fd
-    style Pre fill:#fff3e0
-    style Flujo fill:#e8f5e9
-    style Post fill:#f3e5f5
-    style Alt fill:#ffebee
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style F1 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F2 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F3 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F4 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F5 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F6 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F7 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
 ---
 
