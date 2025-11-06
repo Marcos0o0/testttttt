@@ -190,6 +190,52 @@ graph TB
     style F6 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style F7 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
+## 1.4 Diagrama UC Crear orden auto
+
+```mermaid
+graph TD
+    subgraph CrearOrdenAuto [UC-005: Crear Orden Automática]
+        direction TB
+
+        Info["<b>Información General</b><br/>Actor: Sistema / Administrador<br/>Crear automáticamente una orden de trabajo al aprobar un presupuesto"]
+        
+        Pre["<b>Precondiciones</b><br/>- Presupuesto existente<br/>- Estado del presupuesto = Aprobado<br/>- Administrador autenticado"]
+        
+        subgraph Flujo["Flujo Principal"]
+            UC_A[1. Administrador aprueba un presupuesto]
+            UC_V[2. Validar estado del presupuesto]
+            UC_G[3. Generar orden de trabajo automáticamente]
+            UC_C[4. Copiar datos de cliente y vehículo]
+            UC_E[5. Asignar estado inicial 'En Reparación']
+            UC_L[6. Vincular ID de presupuesto a la orden]
+            UC_R[7. Guardar orden en la base de datos]
+            UC_N[8. Confirmar creación automática al administrador]
+            
+            UC_A --> UC_V --> UC_G --> UC_C --> UC_E --> UC_L --> UC_R --> UC_N
+        end
+
+        Post["<b>Postcondiciones</b><br/>- Orden creada y almacenada<br/>- Estado inicial 'En Reparación'<br/>- Vinculada al presupuesto aprobado"]
+        
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Presupuesto no válido → Mostrar error<br/>FA-002: Error al guardar orden → Registrar log de sistema"]
+
+        Info --> Pre --> Flujo --> Post --> Alt
+    end
+
+    %% ==== ESTILOS ====
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style UC_A fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_V fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_G fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_C fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_L fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+
 ---
 
 ## 1.2. Flujo Principal de Procesos
