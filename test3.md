@@ -235,7 +235,7 @@ graph TD
     style UC_L fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
-
+```
 ## 1.2. Flujo Principal de Procesos
 
 **Proceso:** Desde llegada del cliente hasta entrega del vehículo
