@@ -81,8 +81,8 @@ graph TB
     C3 --> A6[Cambiar a<br/>Entregado]
     A6 --> End2([Fin])
     
-    style S1 fill:#90EE90
-    style S2 fill:#FFB6C1
+    style S1 fill:#407a40
+    style S2 fill:#7d4049
 ```
 
 ---
