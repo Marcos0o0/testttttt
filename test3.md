@@ -56,6 +56,39 @@ graph TB
 - Verde: Proceso automático
 - Rosa: Notificación automática
 
+## 1.2 Diagrama UC Registrar Cliente
+
+```mermaid
+graph TD
+    subgraph Registro Cliente [UC-001: Registrar Cliente]
+        direction TB
+        ADM(Administrador)
+        UC_E[1. Entrar a Pantalla]
+        UC_P[1. Pedir Datos al Cliente]
+        UC_V[2. Verificar Datos]
+        UC_R[3. Registrar y Vincular]
+        
+        %% Conexión del Actor
+        ADM --> UC_E
+        
+        %% Descomposición y Flujo Lógico con Inclusiones
+        UC_E --> UC_P
+        
+        %% El caso de uso principal incluye la verificación
+        UC_E -.->|include| UC_V
+        
+        %% La acción de pedir datos lleva a la verificación
+        UC_P --> UC_V
+        
+        %% La verificación exitosa siempre lleva al registro final
+        UC_V -.->|include| UC_R
+    end
+    
+    %% Leyenda
+    style UC_R fill:#407a40, color:#fff
+    style Registro Cliente fill:#e6e6fa, stroke:#000
+```
+
 ## 1.4 Diagrama UC enviar presupuesto
 
 ```mermaid
