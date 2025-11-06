@@ -904,26 +904,5 @@ taller-api/
 | Tiempo envío email | < 10s |
 
 ---
-
-# NOTAS DE VERSIÓN
-
-## Versión 1.0 - 31 Octubre 2025
-
-**Cambios iniciales:**
-- Creación del documento de diseño funcional y técnico
-- Definición completa de casos de uso y flujos
-- Arquitectura con Docker + MongoDB + Redis
-- Modelo de datos con 5 colecciones principales
-- Esquemas Mongoose completos para User, Client, Quote, WorkOrder
-- Estrategia de caché Redis documentada
-- 25+ endpoints REST documentados con permisos
-- Wireframes básicos de interfaces principales
-- Checklist de implementación por semanas
-
-**Estado:** Aprobado para desarrollo
-
 **Próxima revisión:** Fin de Semana 2
-
 ---
-
-**FIN DEL DOCUMENTO**
