@@ -62,31 +62,38 @@ graph TB
 graph TD
     subgraph Registro Cliente [UC-001: Registrar Cliente]
         direction TB
-        ADM(Administrador)
-        UC_E[1. Entrar a Pantalla]
-        UC_P[1. Pedir Datos al Cliente]
-        UC_V[2. Verificar Datos]
-        UC_R[3. Registrar y Vincular]
         
-        %% Conexión del Actor
-        ADM --> UC_E
+        Info["<b>Información General</b><br/>Actor: Administrador<br/>Registrar nuevo cliente en el sistema<br/>con sus datos de contacto"]
         
-        %% Descomposición y Flujo Lógico con Inclusiones
-        UC_E --> UC_P
+        Pre["<b>Precondiciones</b><br/>- Administrador autenticado<br/>- Acceso al módulo de clientes"]
         
-        %% El caso de uso principal incluye la verificación
-        UC_E -.->|include| UC_V
+        subgraph Flujo["Flujo Principal"]
+            UC_E[1. Entrar a Pantalla Registro]
+            UC_P[2. Ingresar Datos del Cliente]
+            UC_V[3. Validar Datos]
+            UC_R[4. Registrar y Guardar]
+            UC_C[5. Confirmar Registro]
+            
+            UC_E --> UC_P --> UC_V --> UC_R --> UC_C
+        end
         
-        %% La acción de pedir datos lleva a la verificación
-        UC_P --> UC_V
+        Post["<b>Postcondiciones</b><br/>- Cliente registrado en sistema<br/>- Datos disponibles para presupuestos<br/>- Registro en base de datos"]
         
-        %% La verificación exitosa siempre lleva al registro final
-        UC_V -.->|include| UC_R
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Datos inválidos → Corregir datos<br/>FA-002: Cliente duplicado → Actualizar existente"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt
     end
     
-    %% Leyenda
-    style UC_R fill:#407a40, color:#fff
-    style Registro Cliente fill:#e6e6fa, stroke:#000
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_P fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_V fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_R fill:#407a40,stroke:#3d5a3c,color:#fff
+    style UC_C fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
 
 ## 1.4 Diagrama UC enviar presupuesto
