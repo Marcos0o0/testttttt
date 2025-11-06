@@ -195,32 +195,31 @@ graph TB
 
 ```mermaid
 graph TD
-    subgraph Aprobar/Rechazar [UC-004: Aprobar/Rechazar]
+    subgraph Aprobar["UC-004: Aprobar/Rechazar"]
         direction TB
         
         Info["<b>Información General</b><br/>Actor: Cliente<br/>Decidir si aceptar o rechazar el presupuesto enviado por el taller"]
         
-        Pre["<b>Precondiciones</b><br/>- El Presupuesto fue enviado (UC-003)<br/>- El Presupuesto está en estado 'Pendiente'<br/>- El Cliente tiene acceso al correo del Presupuesto"]
+        Pre["<b>Precondiciones</b><br/>- El Presupuesto fue enviado UC-003<br/>- El Presupuesto está en estado Pendiente<br/>- El Cliente tiene acceso al correo del Presupuesto"]
         
-        subgraph Flujo["Flujo Principal (Aprobación)"]
+        subgraph Flujo["Flujo Principal - Aprobación"]
             UC_E[1. Acceder al Presupuesto]
             UC_REV[2. Revisar detalles y costos]
             UC_DEC{3. Decidir: Aprobar o Rechazar}
             UC_APR[4. Seleccionar Aprobar]
-            UC_AUT[5. Creación automática de Orden (Trigger UC-005)]
+            UC_AUT[5. Creación automática de Orden - Trigger UC-005]
             
             UC_E --> UC_REV --> UC_DEC
             UC_DEC -- Aprobación --> UC_APR --> UC_AUT
         end
         
-        Post["<b>Postcondiciones</b><br/>- El Presupuesto cambia a estado 'Aprobado'<br/>- **Se ejecuta automáticamente UC-005: Crear Orden AUTO**<br/>- El Administrador es notificado de la decisión"]
+        Post["<b>Postcondiciones</b><br/>- El Presupuesto cambia a estado Aprobado<br/>- Se ejecuta automáticamente UC-005: Crear Orden AUTO<br/>- El Administrador es notificado de la decisión"]
         
-        Alt["<b>Flujos Alternativos</b><br/>FA-001: Rechazo → Seleccionar Rechazar. Presupuesto cambia a 'Rechazado' y el proceso finaliza.<br/>FA-002: Link Caducado → Notificar al Cliente que contacte al taller para reactivar el presupuesto."]
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Rechazo → Seleccionar Rechazar. Presupuesto cambia a Rechazado y el proceso finaliza.<br/>FA-002: Link Caducado → Notificar al Cliente que contacte al taller para reactivar el presupuesto."]
         
         Info --> Pre --> Flujo --> Post --> Alt
     end
     
-    %% Aplicando tus estilos originales
     style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
     style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
     style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
@@ -230,7 +229,7 @@ graph TD
     style UC_REV fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_DEC fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_APR fill:#2d4a2c,stroke:#3d5a3c,color:#fff
-    style UC_AUT fill:#407a40,stroke:#3d5a3c,color:#fff %% Destacar trigger automático
+    style UC_AUT fill:#407a40,stroke:#3d5a3c,color:#fff
 ```
 
 ## 1.6 Diagrama UC Crear orden auto
