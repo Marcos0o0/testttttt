@@ -63,25 +63,25 @@ graph TB
     subgraph UC003["UC-003: Enviar Presupuesto"]
         direction TB
         
-        Info["<b>Información General</b><br/>Actor: Administrador<br/>Enviar presupuesto creado al cliente<br/>vía Email y/o WhatsApp"]
+        Info["<b>Información General</b><br/>Actor: Administrador<br/>Enviar presupuesto creado al cliente<br/>vía Email"]
         
-        Pre["<b>Precondiciones</b><br/>- Administrador autenticado<br/>- Presupuesto creado UC-002<br/>- Cliente con contacto válido"]
+        Pre["<b>Precondiciones</b><br/>- Administrador autenticado<br/>- Presupuesto creado UC-002<br/>- Cliente con email válido"]
         
         subgraph Flujo["Flujo Principal"]
             F1["1. Seleccionar presupuesto"]
             F2["2. Ver detalles y datos cliente"]
-            F3["3. Elegir canal Email/WhatsApp/Ambos"]
+            F3["3. Revisar email del cliente"]
             F4["4. Confirmar envío"]
-            F5["5. Sistema envía presupuesto"]
+            F5["5. Sistema envía presupuesto por email"]
             F6["6. Actualizar estado a Enviado"]
-            F7["7. Registrar fecha/hora/canal"]
+            F7["7. Registrar fecha y hora de envío"]
             
             F1 --> F2 --> F3 --> F4 --> F5 --> F6 --> F7
         end
         
-        Post["<b>Postcondiciones</b><br/>- Estado: Enviado<br/>- Cliente recibe presupuesto<br/>- Registro en historial"]
+        Post["<b>Postcondiciones</b><br/>- Estado: Enviado<br/>- Cliente recibe presupuesto por email<br/>- Registro en historial"]
         
-        Alt["<b>Flujos Alternativos</b><br/>FA-001: Sin datos contacto → Actualizar UC-001<br/>FA-002: Error envío → Reintentar o notificar"]
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Sin email válido → Actualizar UC-001<br/>FA-002: Error en envío → Reintentar o notificar"]
         
         Info --> Pre --> Flujo --> Post --> Alt
     end
