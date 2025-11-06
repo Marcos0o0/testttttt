@@ -57,6 +57,54 @@ graph TB
 - Verde: Proceso automático
 - Rosa: Notificación automática
 
+##1.4 Diagrama UC enviar presupuesto
+
+```mermaid
+graph TB
+    subgraph UC003["UC-003: Enviar Presupuesto"]
+        direction TB
+        
+        subgraph Info["Información General"]
+            Actor["Actor: Administrador"]
+            Desc["Enviar presupuesto creado al cliente<br/>vía Email y/o WhatsApp"]
+        end
+        
+        subgraph Pre["Precondiciones"]
+            P1["Administrador autenticado"]
+            P2["Presupuesto creado UC-002"]
+            P3["Cliente con contacto válido"]
+        end
+        
+        subgraph Flujo["Flujo Principal"]
+            F1["1. Seleccionar presupuesto"]
+            F2["2. Ver detalles y datos cliente"]
+            F3["3. Elegir canal Email/WhatsApp/Ambos"]
+            F4["4. Confirmar envío"]
+            F5["5. Sistema envía presupuesto"]
+            F6["6. Actualizar estado a Enviado"]
+            F7["7. Registrar fecha/hora/canal"]
+            
+            F1 --> F2 --> F3 --> F4 --> F5 --> F6 --> F7
+        end
+        
+        subgraph Post["Postcondiciones"]
+            PO1["Estado: Enviado"]
+            PO2["Cliente recibe presupuesto"]
+            PO3["Registro en historial"]
+        end
+        
+        subgraph Alt["Flujos Alternativos"]
+            A1["FA-001: Sin datos contacto<br/>Actualizar cliente UC-001"]
+            A2["FA-002: Error envío<br/>Reintentar o notificar"]
+        end
+    end
+    
+    style Info fill:#e3f2fd
+    style Pre fill:#fff3e0
+    style Flujo fill:#e8f5e9
+    style Post fill:#f3e5f5
+    style Alt fill:#ffebee
+```
 ---
 
 ## 1.2. Flujo Principal de Procesos
