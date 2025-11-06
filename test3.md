@@ -101,15 +101,15 @@ graph TD
 ```mermaid
 graph TB
     subgraph UC2["UC-002: Crear Presupuesto"]
-        A[Administrador accede a la pantalla "Crear Presupuesto"] --> B[El sistema muestra lista de clientes registrados]
+        A[Administrador accede a la pantalla Crear Presupuesto] --> B[El sistema muestra lista de clientes registrados]
         B --> C[Administrador selecciona un cliente existente]
         C --> D[El sistema muestra formulario para nuevo presupuesto]
-        D --> E[Administrador ingresa datos del vehículo (marca, modelo, año, patente, kilometraje)]
+        D --> E[Administrador ingresa datos del vehículo: marca, modelo, año, patente, kilometraje]
         E --> F[Administrador describe el trabajo o problema]
         F --> G[Administrador ingresa costo estimado]
         G --> H{¿Datos válidos?}
         H -- No --> I[El sistema muestra error y solicita corrección]
-        H -- Sí --> J[El sistema guarda el presupuesto con estado "Pendiente"]
+        H -- Sí --> J[El sistema guarda el presupuesto con estado Pendiente]
         J --> K[Se genera número correlativo y fecha de emisión]
         K --> L[El sistema confirma la creación del presupuesto al administrador]
     end
@@ -118,8 +118,8 @@ graph TB
         V1[Cliente seleccionado es obligatorio]
         V2[Datos del vehículo son obligatorios]
         V3[Descripción del trabajo obligatoria]
-        V4[Costo estimado debe ser > 0]
-        V5[Estado inicial = "Pendiente"]
+        V4[Costo estimado debe ser mayor a 0]
+        V5[Estado inicial Pendiente]
     end
 
     A --> UC2
@@ -127,6 +127,7 @@ graph TB
 
     style UC2 fill:#2b5ca8,stroke:#1a3e7a,color:#fff
     style Validaciones fill:#cfe0f5,stroke:#7a9bc2,color:#000
+
 ```
 
 ## 1.4 Diagrama UC enviar presupuesto
