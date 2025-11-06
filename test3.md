@@ -56,23 +56,16 @@ graph TB
 - Verde: Proceso automático
 - Rosa: Notificación automática
 
-##1.4 Diagrama UC enviar presupuesto
+## 1.4 Diagrama UC enviar presupuesto
 
 ```mermaid
 graph TB
     subgraph UC003["UC-003: Enviar Presupuesto"]
         direction TB
         
-        subgraph Info["Información General"]
-            Actor["Actor: Administrador"]
-            Desc["Enviar presupuesto creado al cliente<br/>vía Email y/o WhatsApp"]
-        end
+        Info["<b>Información General</b><br/>Actor: Administrador<br/>Enviar presupuesto creado al cliente<br/>vía Email y/o WhatsApp"]
         
-        subgraph Pre["Precondiciones"]
-            P1["Administrador autenticado"]
-            P2["Presupuesto creado UC-002"]
-            P3["Cliente con contacto válido"]
-        end
+        Pre["<b>Precondiciones</b><br/>- Administrador autenticado<br/>- Presupuesto creado UC-002<br/>- Cliente con contacto válido"]
         
         subgraph Flujo["Flujo Principal"]
             F1["1. Seleccionar presupuesto"]
@@ -86,16 +79,11 @@ graph TB
             F1 --> F2 --> F3 --> F4 --> F5 --> F6 --> F7
         end
         
-        subgraph Post["Postcondiciones"]
-            PO1["Estado: Enviado"]
-            PO2["Cliente recibe presupuesto"]
-            PO3["Registro en historial"]
-        end
+        Post["<b>Postcondiciones</b><br/>- Estado: Enviado<br/>- Cliente recibe presupuesto<br/>- Registro en historial"]
         
-        subgraph Alt["Flujos Alternativos"]
-            A1["FA-001: Sin datos contacto<br/>Actualizar cliente UC-001"]
-            A2["FA-002: Error envío<br/>Reintentar o notificar"]
-        end
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Sin datos contacto → Actualizar UC-001<br/>FA-002: Error envío → Reintentar o notificar"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt
     end
     
     style Info fill:#e3f2fd
