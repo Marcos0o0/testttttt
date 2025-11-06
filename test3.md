@@ -126,7 +126,7 @@ graph TB
 
 ## 2.1. Diagrama de Arquitectura
 
-**Stack:** Node.js 18 + Express + MongoDB 6.0 + Redis 7.0 + Docker
+**Stack:** Node.js + Express + MongoDB + Redis + Docker
 
 ```mermaid
 graph TB
