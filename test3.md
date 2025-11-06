@@ -100,34 +100,51 @@ graph TD
 
 ```mermaid
 graph TB
-    subgraph UC2["UC-002: Crear Presupuesto"]
-        A[Administrador accede a la pantalla Crear Presupuesto] --> B[El sistema muestra lista de clientes registrados]
-        B --> C[Administrador selecciona un cliente existente]
-        C --> D[El sistema muestra formulario para nuevo presupuesto]
-        D --> E[Administrador ingresa datos del vehículo: marca, modelo, año, patente, kilometraje]
-        E --> F[Administrador describe el trabajo o problema]
-        F --> G[Administrador ingresa costo estimado]
-        G --> H{¿Datos válidos?}
-        H -- No --> I[El sistema muestra error y solicita corrección]
-        H -- Sí --> J[El sistema guarda el presupuesto con estado Pendiente]
-        J --> K[Se genera número correlativo y fecha de emisión]
-        K --> L[El sistema confirma la creación del presupuesto al administrador]
+    subgraph UC002["UC-002: Crear Presupuesto"]
+        direction TB
+        
+        Info["<b>Información General</b><br/>Actor: Administrador<br/>Crear nuevo presupuesto para un cliente<br/>con datos del vehículo y costo estimado"]
+        
+        Pre["<b>Precondiciones</b><br/>- Administrador autenticado<br/>- Cliente registrado en sistema UC-001<br/>- Acceso al módulo de presupuestos"]
+        
+        subgraph Flujo["Flujo Principal"]
+            F1["1. Acceder a Crear Presupuesto"]
+            F2["2. Seleccionar cliente"]
+            F3["3. Ingresar datos del vehículo<br/>marca, modelo, año, patente, km"]
+            F4["4. Describir trabajo o problema"]
+            F5["5. Ingresar costo estimado"]
+            F6["6. Sistema valida datos"]
+            F7["7. Guardar con estado Pendiente"]
+            F8["8. Generar número y fecha"]
+            F9["9. Confirmar creación"]
+            
+            F1 --> F2 --> F3 --> F4 --> F5 --> F6 --> F7 --> F8 --> F9
+        end
+        
+        Post["<b>Postcondiciones</b><br/>- Presupuesto creado estado Pendiente<br/>- Número correlativo asignado<br/>- Listo para enviar UC-003"]
+        
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Datos inválidos → Corregir campos<br/>FA-002: Costo menor o igual a 0 → Reingresar"]
+        
+        Valid["<b>Validaciones</b><br/>- Cliente obligatorio<br/>- Datos vehículo obligatorios<br/>- Descripción obligatoria<br/>- Costo mayor a 0"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt --> Valid
     end
-
-    subgraph Validaciones["Validaciones del Sistema"]
-        V1[Cliente seleccionado es obligatorio]
-        V2[Datos del vehículo son obligatorios]
-        V3[Descripción del trabajo obligatoria]
-        V4[Costo estimado debe ser mayor a 0]
-        V5[Estado inicial Pendiente]
-    end
-
-    A --> UC2
-    UC2 -.-> Validaciones
-
-    style UC2 fill:#2b5ca8,stroke:#1a3e7a,color:#fff
-    style Validaciones fill:#cfe0f5,stroke:#7a9bc2,color:#000
-
+    
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style Valid fill:#2a3a4a,stroke:#3a4a5a,color:#fff
+    style F1 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F2 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F3 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F4 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F5 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F6 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F7 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F8 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style F9 fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
 
 ## 1.4 Diagrama UC enviar presupuesto
