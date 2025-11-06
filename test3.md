@@ -48,8 +48,8 @@ graph TB
     UC4 -.->|include| UC5
     UC7 -.->|include| UC9
     
-    style UC5 fill:#90EE90
-    style UC9 fill:#FFB6C1
+    style UC5 fill:#407a40
+    style UC9 fill:#7d4049
 ```
 
 **Leyenda:**
