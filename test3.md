@@ -278,6 +278,50 @@ graph TD
     style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
+
+## 1.7 Diagrama UC Asignar mecanico
+
+
+## 1.8 Diagrama UC Actualizar estado
+```mermaid
+graph TD
+    subgraph Actualizar Estado [UC-007: Actualizar Estado]
+        direction TB
+        
+        Info["<b>Información General</b><br/>Actores: Administrador, Mecánico<br/>Actualizar el estado de una orden de trabajo<br/>durante su ciclo de vida"]
+        
+        Pre["<b>Precondiciones</b><br/>- Usuario autenticado (Admin/Mecánico)<br/>- Orden de trabajo existente<br/>- Acceso al módulo de órdenes"]
+        
+        subgraph Flujo["Flujo Principal"]
+            UC_S[1. Seleccionar Orden de Trabajo]
+            UC_C[2. Consultar Estado Actual]
+            UC_E[3. Elegir Nuevo Estado]
+            UC_D[4. Ingresar Detalles/Observaciones]
+            UC_G[5. Guardar Cambio de Estado]
+            UC_N[6. Notificar Cambio]
+            
+            UC_S --> UC_C --> UC_E --> UC_D --> UC_G --> UC_N
+        end
+        
+        Post["<b>Postcondiciones</b><br/>- Estado actualizado en sistema<br/>- Historial de cambios registrado<br/>- Notificación enviada (si aplica)<br/>- Include UC-009 si estado es 'Listo'"]
+        
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Estado inválido → Mostrar error<br/>FA-002: Transición no permitida → Solicitar corrección<br/>FA-003: Estado 'Listo' → Ejecutar UC-009 AUTO"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt
+    end
+    
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style UC_S fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_C fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_D fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_G fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+```
 ## 1.2. Flujo Principal de Procesos
 
 **Proceso:** Desde llegada del cliente hasta entrega del vehículo
