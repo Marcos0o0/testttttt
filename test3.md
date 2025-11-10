@@ -322,6 +322,50 @@ graph TD
     style UC_G fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
 ```
+
+## 1.9 Diagrama UC Ver ordenes de trabajo
+
+## 1.10 Diagrama UC Notificar listo auto
+```mermaid
+graph TD
+    subgraph Notificar Listo [UC-009: Notificar Listo AUTO]
+        direction TB
+        
+        Info["<b>Información General</b><br/>Actor: Sistema (Automático)<br/>Notificar automáticamente al cliente cuando<br/>su vehículo está listo para retiro"]
+        
+        Pre["<b>Precondiciones</b><br/>- Orden de trabajo en estado 'Listo'<br/>- UC-007 ejecutado con cambio a 'Listo'<br/>- Datos de contacto del cliente válidos"]
+        
+        subgraph Flujo["Flujo Principal"]
+            UC_D[1. Detectar Cambio a Estado 'Listo']
+            UC_O[2. Obtener Datos del Cliente]
+            UC_G[3. Generar Mensaje de Notificación]
+            UC_E[4. Enviar Notificación]
+            UC_R[5. Registrar Envío]
+            UC_A[6. Actualizar Estado de Notificación]
+            
+            UC_D --> UC_O --> UC_G --> UC_E --> UC_R --> UC_A
+        end
+        
+        Post["<b>Postcondiciones</b><br/>- Notificación enviada al cliente<br/>- Registro de envío en historial<br/>- Estado de orden actualizado con fecha/hora<br/>- Cliente informado para retirar vehículo"]
+        
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Datos de contacto inválidos → Alertar admin<br/>FA-002: Fallo en envío → Reintentar/Notificar error<br/>FA-003: Cliente sin email/teléfono → Registro manual"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt
+    end
+    
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style UC_D fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_O fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_G fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_R fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_A fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+```
+
 ## 1.2. Flujo Principal de Procesos
 
 **Proceso:** Desde llegada del cliente hasta entrega del vehículo
