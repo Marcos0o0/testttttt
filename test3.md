@@ -340,7 +340,7 @@ graph TD
             UC_S[3. Seleccionar Orden Específica]
             UC_V[4. Visualizar Detalles Completos]
             UC_H[5. Consultar Historial de Estados]
-            UC_F[6. Aplicar Filtros (Opcional)]
+            UC_F[6. Aplicar Filtros si es necesario]
             
             UC_A --> UC_L --> UC_S --> UC_V --> UC_H --> UC_F
         end
