@@ -325,6 +325,47 @@ graph TD
 
 ## 1.9 Diagrama UC Ver ordenes de trabajo
 
+```mermaid
+graph TD
+    subgraph Ver Ordenes [UC-008: Ver Órdenes]
+        direction TB
+        
+        Info["<b>Información General</b><br/>Actor: Mecánico<br/>Consultar y visualizar las órdenes de trabajo<br/>asignadas y su información detallada"]
+        
+        Pre["<b>Precondiciones</b><br/>- Mecánico autenticado<br/>- Acceso al módulo de órdenes<br/>- Órdenes existentes en el sistema"]
+        
+        subgraph Flujo["Flujo Principal"]
+            UC_A[1. Acceder a Módulo de Órdenes]
+            UC_L[2. Listar Órdenes Asignadas]
+            UC_S[3. Seleccionar Orden Específica]
+            UC_V[4. Visualizar Detalles Completos]
+            UC_H[5. Consultar Historial de Estados]
+            UC_F[6. Aplicar Filtros (Opcional)]
+            
+            UC_A --> UC_L --> UC_S --> UC_V --> UC_H --> UC_F
+        end
+        
+        Post["<b>Postcondiciones</b><br/>- Información de órdenes visualizada<br/>- Mecánico informado de sus tareas<br/>- Registro de consulta en sistema<br/>- Conocimiento del estado actual"]
+        
+        Alt["<b>Flujos Alternativos</b><br/>FA-001: Sin órdenes asignadas → Mostrar mensaje vacío<br/>FA-002: Filtrar por estado → Mostrar resultados filtrados<br/>FA-003: Buscar por cliente/vehículo → Mostrar coincidencias"]
+        
+        Info --> Pre --> Flujo --> Post --> Alt
+    end
+    
+    style Info fill:#1e3a5f,stroke:#2c5282,color:#fff
+    style Pre fill:#4a2c2a,stroke:#6b3e3a,color:#fff
+    style Flujo fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style Post fill:#3a2a4a,stroke:#4a3a5a,color:#fff
+    style Alt fill:#4a2a2a,stroke:#5a3a3a,color:#fff
+    style UC_A fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_L fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_S fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_V fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_H fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+    style UC_F fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+```
+
+
 ## 1.10 Diagrama UC Notificar listo auto
 ```mermaid
 graph TD
