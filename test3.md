@@ -283,7 +283,7 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph Asignar Mecanico [UC-006: Asignar Mecánico]
+    subgraph AsignarMecanico [UC-006: Asignar Mecánico]
         direction TB
         
         Info["<b>Información General</b><br/>Actor: Administrador<br/>Asignar una Orden de Trabajo (OT) creada<br/>a un Mecánico disponible"]
@@ -291,10 +291,10 @@ graph TD
         Pre["<b>Precondiciones</b><br/>- OT creada (UC-005) en estado inicial 'En reparación'<br/>- Mecánicos registrados en sistema"]
         
         subgraph Flujo["Flujo Principal"]
-            UC_S[1. Visualizar Órdenes Pendientes]
-            UC_E[2. Elegir OT y Mecánico (Lista de disponibilidad)]
-            UC_A[3. Asignar OT al Mecánico seleccionado]
-            UC_U[4. Notificar a Mecánico de nueva tarea]
+            UC_S["1. Visualizar Órdenes Pendientes"]
+            UC_E["2. Elegir OT y Mecánico (Lista de disponibilidad)"]
+            UC_A["3. Asignar OT al Mecánico seleccionado"]
+            UC_U["4. Notificar a Mecánico de nueva tarea"]
             
             UC_S --> UC_E --> UC_A --> UC_U
         end
@@ -315,7 +315,7 @@ graph TD
     style UC_E fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_A fill:#2d4a2c,stroke:#3d5a3c,color:#fff
     style UC_U fill:#2d4a2c,stroke:#3d5a3c,color:#fff
-    style UC_N fill:#2d4a2c,stroke:#3d5a3c,color:#fff
+
 ```
 
 ## 1.8 Diagrama UC Actualizar estado
